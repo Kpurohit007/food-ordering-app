@@ -35,9 +35,6 @@ The design of the app is modern and user-friendly, with a focus on simplicity an
 
 The Home screen displays the list of food items in a grid view, with each food item displayed as a card.The Cart screen displays the list of items in the user's cart, with the total price and checkout button displayed prominently. The Order screen displays the details of the user's order.The Admin screen displays the management interface for orders and cart, with clear and intuitive navigation and controls.
 
-<!-- The app is designed to be scalable and modular, with a clean and organized codebase. The backend API is implemented using Express.js and Mongoose, with separate controllers and models for each component. The frontend is implemented using React, with separate components for each screen and functionality.-->
-
-
 ## Steps to Run the App- 
 
 ### Getting Started with Create React App
@@ -68,6 +65,41 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
+
+# "MongoDB Atlas Connection String from my cloud DB"
+  mongo db connection atlas url 
+
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = "mongodb+srv://keshavpurohit:<db_password>@cluster0.fct6f.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+
+// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
+});
+
+async function run() {
+  try {
+    // Connect the client to the server	(optional starting in v4.7)
+    await client.connect();
+    // Send a ping to confirm a successful connection
+    await client.db("admin").command({ ping: 1 });
+    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
+}
+run().catch(console.dir);
+
+
+
+[username-:keshavpurohit]
+[password-:KbNlaHuMrpcNaExG]
+
 
 
 
